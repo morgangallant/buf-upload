@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package upload.v1;
+
+option go_package = "github.com/morgangallant/buf-upload/gen/upload/v1;uploadv1";
+
+message UploadRequest {
+  string name = 1;
+  bytes data = 2;
+}
+
+message UploadResponse {
+  string name = 1;
+  int64 size = 2;
+}
+
+service UploadService {
+  rpc Upload(stream UploadRequest) returns (UploadResponse) {}
+}
